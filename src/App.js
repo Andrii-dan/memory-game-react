@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import SingleCard from './components/SingleCard';
 
 const cardImages = [
-	{ src: '/img/helmet-1.png' },
-	{ src: '/img/potion-1.png' },
-	{ src: '/img/ring-1.png' },
-	{ src: '/img/scroll-1.png' },
-	{ src: '/img/shield-1.png' },
-	{ src: '/img/sword-1.png' },
+	{ src: '/img/helmet-1.png', matched: false },
+	{ src: '/img/potion-1.png', matched: false },
+	{ src: '/img/ring-1.png', matched: false },
+	{ src: '/img/scroll-1.png', matched: false },
+	{ src: '/img/shield-1.png', matched: false },
+	{ src: '/img/sword-1.png', matched: false },
 ];
 
 function App() {
@@ -31,8 +31,6 @@ function App() {
 		choiceOne ? setChoiceTwo(card) : setChoiceOne(card);
 	};
 
-	console.log(choiceOne, choiceTwo);
-
 	//reset choices & increase turns
 	const resetTurn = () => {
 		setChoiceOne(null);
@@ -43,12 +41,24 @@ function App() {
 	// compare two selected cards
 	useEffect(() => {
 		if (choiceOne && choiceTwo) {
-			choiceOne.src === choiceTwo.src ? console.log('tak') : console.log('Nie');
+			if (choiceOne.src === choiceTwo.src) {
+				setCards((prev) => {
+					return prev.map((card) => {
+						if (card.src === choiceOne.src) {
+							return { ...card, matched: true };
+						} else {
+							return card;
+						}
+					});
+				});
+			} else {
+				console.log('Nie');
+			}
 			resetTurn();
-		} else {
-			return;
 		}
 	}, [choiceOne, choiceTwo]);
+
+	console.log(cards);
 
 	return (
 		<div className='App'>
