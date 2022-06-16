@@ -2,12 +2,20 @@ import React, { useState, useEffect } from 'react';
 import SingleCard from './components/SingleCard';
 
 const cardImages = [
-	{ src: '/img/helmet-1.png', matched: false },
-	{ src: '/img/potion-1.png', matched: false },
-	{ src: '/img/ring-1.png', matched: false },
-	{ src: '/img/scroll-1.png', matched: false },
-	{ src: '/img/shield-1.png', matched: false },
-	{ src: '/img/sword-1.png', matched: false },
+	// { src: '/img/politics/Biden.png', matched: false },
+	// { src: '/img/politics/Johnson.png', matched: false },
+	// { src: '/img/politics/Merkel.png', matched: false },
+	// { src: '/img/politics/Obama.png', matched: false },
+	// { src: '/img/politics/Putin.png', matched: false },
+	// { src: '/img/politics/Queen.png', matched: false },
+	// // { src: '/img/politics/Trump.png', matched: false },
+	// // { src: '/img/politics/Zelenskyi.png', matched: false },
+	{ src: '/img/sleepingQueen/maja-1.png', matched: false },
+	{ src: '/img/sleepingQueen/maja-2.png', matched: false },
+	{ src: '/img/sleepingQueen/maja-3.png', matched: false },
+	{ src: '/img/sleepingQueen/maja-4.png', matched: false },
+	{ src: '/img/sleepingQueen/maja-5.png', matched: false },
+	{ src: '/img/sleepingQueen/maja-6.png', matched: false },
 ];
 
 function App() {
@@ -76,6 +84,7 @@ function App() {
 					);
 				})}
 			</div>
+			<p className='turns'>Turns: {turns}</p>
 		</div>
 	);
 }
