@@ -2,20 +2,14 @@ import React, { useState, useEffect } from 'react';
 import SingleCard from './components/SingleCard';
 
 const cardImages = [
-	// { src: '/img/politics/Biden.png', matched: false },
-	// { src: '/img/politics/Johnson.png', matched: false },
-	// { src: '/img/politics/Merkel.png', matched: false },
-	// { src: '/img/politics/Obama.png', matched: false },
-	// { src: '/img/politics/Putin.png', matched: false },
+	{ src: '/img/politics/Biden.png', matched: false },
+	{ src: '/img/politics/Johnson.png', matched: false },
+	{ src: '/img/politics/Merkel.png', matched: false },
+	{ src: '/img/politics/Obama.png', matched: false },
+	{ src: '/img/politics/Putin.png', matched: false },
+	{ src: '/img/politics/Trump.png', matched: false },
 	// { src: '/img/politics/Queen.png', matched: false },
-	// // { src: '/img/politics/Trump.png', matched: false },
-	// // { src: '/img/politics/Zelenskyi.png', matched: false },
-	{ src: '/img/sleepingQueen/maja-1.png', matched: false },
-	{ src: '/img/sleepingQueen/maja-2.png', matched: false },
-	{ src: '/img/sleepingQueen/maja-3.png', matched: false },
-	{ src: '/img/sleepingQueen/maja-4.png', matched: false },
-	{ src: '/img/sleepingQueen/maja-5.png', matched: false },
-	{ src: '/img/sleepingQueen/maja-6.png', matched: false },
+	// { src: '/img/politics/Zelenskyi.png', matched: false },
 ];
 
 function App() {
@@ -23,6 +17,7 @@ function App() {
 	const [turns, setTurns] = useState(0);
 	const [choiceOne, setChoiceOne] = useState(null);
 	const [choiceTwo, setChoiceTwo] = useState(null);
+	const [disabled, setDisabled] = useState(false);
 
 	//Shuffle cards
 	const shuffleCards = () => {
@@ -44,11 +39,13 @@ function App() {
 		setChoiceOne(null);
 		setChoiceTwo(null);
 		setTurns((prev) => prev + 1);
+		setDisabled(false);
 	};
 
 	// compare two selected cards
 	useEffect(() => {
 		if (choiceOne && choiceTwo) {
+			setDisabled(true);
 			if (choiceOne.src === choiceTwo.src) {
 				setCards((prev) => {
 					return prev.map((card) => {
@@ -70,7 +67,7 @@ function App() {
 
 	return (
 		<div className='App'>
-			<h1>Magic Match</h1>
+			<h1>Memory Game</h1>
 			<button onClick={shuffleCards}>New Game</button>
 			<div className='card-grid'>
 				{cards.map((card) => {
@@ -80,6 +77,7 @@ function App() {
 							key={card.id}
 							handleChoice={handleChoice}
 							flipped={card === choiceOne || card === choiceTwo || card.matched}
+							disabled={disabled}
 						/>
 					);
 				})}
