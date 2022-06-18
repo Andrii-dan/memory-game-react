@@ -2,6 +2,9 @@
 	margin-top: 40px;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
+	@media screen and (max-width: 800px) {
+		grid-template-columns: 1fr;
+	}
 	grid-gap: 20px;
 
 	button {
@@ -21,6 +24,12 @@
 
 		img {
 			border-radius: 50%;
+		}
+		@media screen and (max-width: 800px) {
+			display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
 		}
 	}
 }
