@@ -7,6 +7,10 @@
 	}
 	grid-gap: 20px;
 
+	legend {
+		text-align: center;
+	}
+
 	button {
 		background: none;
 		border: none;
@@ -27,9 +31,9 @@
 		}
 		@media screen and (max-width: 800px) {
 			display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
 		}
 	}
 }
