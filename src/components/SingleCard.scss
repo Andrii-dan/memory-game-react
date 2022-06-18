@@ -17,7 +17,11 @@
 
 	.back {
 		transition: all ease-in 0.2s;
-		transition-delay: 0.2s;
+		transition-delay: 0.1s;
+		&:hover {
+			transform: scale(1.1);
+			// border: 6px solid #c23866;
+		}
 	}
 
 	.flipped {
